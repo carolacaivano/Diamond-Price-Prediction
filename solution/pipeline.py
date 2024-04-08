@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 import sys
+import pickle
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, OneHotEncoder, LabelEncoder
@@ -11,7 +12,9 @@ from sklearn.metrics import mean_absolute_error, r2_score
 from sklearn.model_selection import KFold, cross_val_score
 
 #load the dataset 
-data=pd.read_csv('sys.argv[1]')
+path=sys.argv[1]
+print(path)
+data=pd.read_csv(path)
 num_data = data.shape[0]
 print("The dataset consists of {} data points.".format(num_data))
 
@@ -80,6 +83,10 @@ print("r2 score:", r2_linear)
 print("mae score:", mae_linear)
 print("R² Score: {:.2f}".format(np.mean(r2_linear)))
 print("MAE Score: {:.2f}".format(np.mean(mae_linear)))
+#save the model for linear regression and the scores obtained
+lr_pkl_file = r'../diamond_linear_regression.pkl' 
+with open(lr_pkl_file, 'wb') as file:  
+    pickle.dump(lr, file)
 
 #training and evaluation of Linear Tree Regressor
 for train_index, test_index in kf.split(X):
@@ -98,3 +105,7 @@ print(r2_regr)
 print(mae_regr)
 print("R² Score: {:.2f}".format(np.mean(r2_regr)))
 print("MAE Score: {:.2f}".format(np.mean(mae_regr)))
+
+regr_pkl_file =r'../diamond_linear_tree_regression.pkl'
+with open(regr_pkl_file, 'wb') as file:  
+    pickle.dump(regr, file)
