@@ -33,7 +33,7 @@ def preprocess_features(features: FeatureSet) -> pd.DataFrame:
     features_df=features_df.drop(['cut'],axis=1)
     features_df=features_df.drop(['clarity'],axis=1)
     features_df=features_df.drop(['color'],axis=1)
-    features_df= StandardScaler.fit_transform(features_df)
+    features_df= StandardScaler().fit_transform(features_df)
     
     return features_df    
 
