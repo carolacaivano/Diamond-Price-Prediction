@@ -97,7 +97,7 @@ print("mae score:", mae_linear)
 print("R² Score: {:.2f}".format(np.mean(r2_linear)))
 print("MAE Score: {:.2f}".format(np.mean(mae_linear)))
 #save the model for Linear Regression
-lr_pkl_file = r'../diamond_linear_regression.pkl' 
+lr_pkl_file = r'../solution/diamond_linear_regression.pkl' 
 with open(lr_pkl_file, 'wb') as file:  
     pickle.dump(lr, file)
 
@@ -119,7 +119,7 @@ print(mae_regr)
 print("R² Score: {:.2f}".format(np.mean(r2_regr)))
 print("MAE Score: {:.2f}".format(np.mean(mae_regr)))
 #save the model for Linear Tree Regressor
-regr_pkl_file =r'../diamond_linear_tree_regression.pkl'
+regr_pkl_file =r'../solution/diamond_linear_tree_regression.pkl'
 with open(regr_pkl_file, 'wb') as file:  
     pickle.dump(regr, file)
 
@@ -140,3 +140,4 @@ data = {
 }
 scores_df = pd.DataFrame(data)
 scores_df.to_csv(r'../metrics_scores.csv')
+print("process finished succesfully")
