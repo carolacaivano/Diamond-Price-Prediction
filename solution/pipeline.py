@@ -27,12 +27,25 @@ num_data = data.shape[0]
 print("The dataset consists of {} after the data cleaning.".format(num_data))
 
 #identifying and removing outliers
-features=['depth','table','x','y','z','carat']
-lower_bounds=[58.75,51.5,1.92,1.9450000000000016,1.1700000000000004,-0.5850000000000001]
-upper_bounds=[64.75,63.5,9.28,9.264999999999999,5.729999999999999,2.015]
-for feature, lb_feature, ub_feature in zip(features, lower_bounds, upper_bounds):
-    filter_value = (data[feature] >= lb_feature) & (data[feature] <= ub_feature)
-    data = data.loc[filter_value, :]
+def remove_outliers_numeric(df,feature,delta=1.5):
+    '''This function takes as input DataFrame and the feature name to consider and remove outliers 
+    based on IQR and a delta (by default delta = 1.5)'''
+    Q1_value = df[feature].quantile(0.25)
+    Q3_value = df[feature].quantile(0.75)
+    IQR_value = Q3_value - Q1_value    #IQR is interquartile range.
+    lower_bound=Q1_value - delta * IQR_value
+    upper_bound= Q3_value + delta *IQR_value
+    print("lower bound for ", feature, "is {}".format(lower_bound))
+    print("upper bound for ", feature, "is {}".format(upper_bound))
+    filter_value = (df[feature] >= lower_bound) & (df[feature] <= upper_bound)
+    df = df.loc[filter_value,:]
+    return df
+data=remove_outliers_numeric(data,'depth',delta=1.5)
+data=remove_outliers_numeric(data,'table',delta=1.5)
+data=remove_outliers_numeric(data,'x',delta=1.5)
+data=remove_outliers_numeric(data,'y',delta=1.5)
+data=remove_outliers_numeric(data,'z',delta=1.5)
+data=remove_outliers_numeric(data,'carat',delta=1.5)
 num_data = data.shape[0]
 print("The dataset consists of {} after removing the outliers.".format(num_data))
 
@@ -60,8 +73,8 @@ lr = LinearRegression()
 regr = LinearTreeRegressor(base_estimator=LinearRegression())
 
 kf = KFold(n_splits=5)
-X=np.array(data_X)
-y=np.array(data_y)
+X=data_X
+y=data_y
 r2_linear=[]
 mae_linear=[]
 r2_regr=[]
@@ -69,8 +82,8 @@ mae_regr=[]
 #training and evaluation of linear regression
 for train_index, test_index in kf.split(X):
     #print("TRAIN:", train_index, "TEST:", test_index)
-    X_train, X_test = X[train_index], X[test_index]
-    y_train, y_test = y[train_index], y[test_index]
+    X_train, X_test = X.iloc[train_index], X.iloc[test_index]
+    y_train, y_test = y.iloc[train_index], y.iloc[test_index]
     X_train= scaler.fit_transform(X_train)
     X_test= scaler.transform(X_test)
     lr.fit(X_train,y_train)
@@ -91,8 +104,8 @@ with open(lr_pkl_file, 'wb') as file:
 #training and evaluation of Linear Tree Regressor
 for train_index, test_index in kf.split(X):
     #print("TRAIN:", train_index, "TEST:", test_index)
-    X_train, X_test = X[train_index], X[test_index]
-    y_train, y_test = y[train_index], y[test_index]
+    X_train, X_test = X.iloc[train_index], X.iloc[test_index]
+    y_train, y_test = y.iloc[train_index], y.iloc[test_index]
     X_train= scaler.fit_transform(X_train)
     X_test= scaler.transform(X_test)
     regr.fit(X_train,y_train)
