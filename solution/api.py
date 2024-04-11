@@ -22,6 +22,7 @@ def preprocess_features(features: FeatureSet) -> pd.DataFrame:
     """Function to preprocess input features"""
     # Convert the input features into a DataFrame
     features_df = pd.DataFrame([features.model_dump()])
+    print(features_df)
     cut_order= {'Fair': 0, 'Good': 1, 'Very Good': 2, 'Premium': 3, 'Ideal': 4}
     clarity_order={'I1':0,'SI2':1, 'SI1':2, 'VS2':3, 'VS1':4, 'VVS2':5, 'VVS1':6, 'IF':7}
     color_order={'J':0, 'I':1, 'H':2, 'G':3, 'F':4, 'E':5,'D':6}
@@ -39,7 +40,7 @@ def preprocess_features(features: FeatureSet) -> pd.DataFrame:
 
 #we define a function that receive a feature set x and return a model response 
 def regressor(x:dict)->dict:
-    with open('../diamond_linear_tree_regression.pkl','rb') as model_file:
+    with open('./diamond_linear_tree_regression.pkl','rb') as model_file:
         loaded_model=pickle.load(model_file)
     res=loaded_model.predict(x)[0]
     return{"prediction": res}    
