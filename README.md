@@ -99,7 +99,7 @@ In the same conda environment we execute the script pipeline.py, that can be fou
 ```
 $ python pipeline.py path_of_dataset
 ```
-so you need to specify the path where your dataset is located.
+you need to specify the path where your dataset is located.
 
 #### Challenge 3
 

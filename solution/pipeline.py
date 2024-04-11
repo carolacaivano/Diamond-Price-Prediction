@@ -22,6 +22,14 @@ data = data.drop(data[data["price"]<=0].index)
 data = data.drop(data[data["x"]<=0].index)
 data = data.drop(data[data["y"]<=0].index)
 data = data.drop(data[data["z"]<=0].index)
+
+#we delete the elements that don't have the color, cut and clarity that we have specified
+color=['J', 'I', 'H', 'G', 'F', 'E','D']
+cut=['Fair', 'Good', 'Very Good', 'Premium', 'Ideal']
+clarity=['I1','SI2', 'SI1', 'VS2', 'VS1', 'VVS2', 'VVS1', 'IF']
+data = data[data['color'].isin(color)]
+data = data[data['cut'].isin(cut)]
+data = data[data['clarity'].isin(clarity)]
 num_data = data.shape[0]
 print("The dataset consists of {} data points after the data cleaning.".format(num_data))
 
