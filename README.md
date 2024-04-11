@@ -88,13 +88,18 @@ Create a conda environment with the following command:
 $ conda env create -f environment.yml -n diamonds 
 ```
 The notebook you'll be working with is named price_prediction.ipynb, you can find it in the folder solution. To get started, simply activate the environment and initiate the Jupyter Notebook server by executing the following command.
+
 ```
 $ conda activate diamonds
 $ jupyter -notebook
 ```
 
-
 #### Challenge 2
+In the same conda environment we execute the script pipeline.py, that can be found in the folder solution. We can run it with the following command:
+```
+$ python pipeline.py path_of_dataset
+```
+so you need to specify the path where your dataset is located.
 
 #### Challenge 3
 
