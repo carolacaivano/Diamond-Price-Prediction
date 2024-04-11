@@ -82,4 +82,13 @@ So, ready to add some sparkle to this challenge? Let's make these diamonds shine
 ---
 
 ## How to run
-Please fill this section as part of the assignment.
+#### Challenge 1
+Create a conda environment with the following command:
+´´´conda env create -f environment.yml´´´
+
+
+#### Challenge 2
+
+#### Challenge 3
+
+#### Challenge 4
