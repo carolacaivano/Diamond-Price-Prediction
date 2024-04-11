@@ -85,7 +85,12 @@ So, ready to add some sparkle to this challenge? Let's make these diamonds shine
 #### Challenge 1
 Create a conda environment with the following command:
 ```
-conda env create -f environment.yml
+$ conda env create -f environment.yml -n diamonds 
+```
+The notebook you'll be working with is named price_prediction.ipynb, you can find it in the folder solution. To get started, simply activate the environment and initiate the Jupyter Notebook server by executing the following command.
+```
+$ conda activate diamonds
+$ jupyter -notebook
 ```
 
 
