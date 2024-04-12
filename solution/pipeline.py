@@ -5,7 +5,7 @@ import sys
 import pickle
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler, OneHotEncoder, LabelEncoder
+from sklearn.preprocessing import StandardScaler, LabelEncoder
 from sklearn.linear_model import LinearRegression
 from lineartree import LinearTreeRegressor
 from sklearn.metrics import mean_absolute_error, r2_score
@@ -42,8 +42,6 @@ def remove_outliers_numeric(df,feature,delta=1.5):
     IQR_value = Q3_value - Q1_value    #IQR is interquartile range.
     lower_bound=Q1_value - delta * IQR_value
     upper_bound= Q3_value + delta *IQR_value
-    #print("lower bound for ", feature, "is {}".format(lower_bound))
-    #print("upper bound for ", feature, "is {}".format(upper_bound))
     filter_value = (df[feature] >= lower_bound) & (df[feature] <= upper_bound)
     df = df.loc[filter_value,:]
     return df
@@ -75,10 +73,8 @@ print(" We succesfully encoded the categorical features")
 scaler = StandardScaler()
 data_X=data[["carat","depth", "table", "x", "y", "z","encoded_cut", "encoded_clarity",	"encoded_color"]]
 data_y=data[["price"]]
-#we define the two models 
-lr = LinearRegression()
+#we define the model
 regr = LinearTreeRegressor(base_estimator=LinearRegression())
-
 kf = KFold(n_splits=5)
 X=data_X
 y=data_y
@@ -113,9 +109,9 @@ data = {
     }
 }
 scores_df = pd.DataFrame(data)
-scores_df.to_csv(r'../metrics_scores.csv')
+scores_df.to_csv(r'./metrics_scores.csv')
 
-#save the model for Linear Tree Regressor
+#we train and save the model for Linear Tree Regressor
 X=scaler.fit_transform(X)
 regr.fit(X,y)
 regr_pkl_file =r'./diamond_linear_tree_regression.pkl'
