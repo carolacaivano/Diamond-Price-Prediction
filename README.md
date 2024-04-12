@@ -95,7 +95,7 @@ $ jupyter -notebook
 ```
 
 #### Challenge 2
-In the same conda environment we execute the script pipeline.py, that can be found in the folder solution. We can run it with the following command:
+In the same conda environment you van execute the script pipeline.py, that can be found in the folder solution. You can run it with the following command:
 ```
 $ python pipeline.py path_of_dataset
 ```
@@ -107,7 +107,7 @@ In the same conda enviroment you can run the web app with the following command:
 ```
 $ uvicorn api:app --reload --port 8010
 ```
-and navigate the URL http://127.0.0.1:8010/docs, insert your parameters and the click execute to get your prediction.
+and navigate the URL http://127.0.0.1:8010/docs, insert your parameters and click execute to get your prediction.
 
 
 #### Challenge 4
