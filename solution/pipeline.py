@@ -111,11 +111,16 @@ data = {
 scores_df = pd.DataFrame(data)
 scores_df.to_csv(r'./metrics_scores.csv')
 
-#we train and save the model for Linear Tree Regressor
+#we train Linear Tree Regressor 
 X=scaler.fit_transform(X)
 regr.fit(X,y)
 regr_pkl_file =r'./diamond_linear_tree_regression.pkl'
+#we save the model 
 with open(regr_pkl_file, 'wb') as file:  
     pickle.dump(regr, file)
+#we save the scaler 
+scaler_file=r'./scaler.pkl'
+with open(scaler_file, 'wb') as file:  
+    pickle.dump(scaler, file)   
 print("process finished succesfully")    
 
