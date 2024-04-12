@@ -107,7 +107,7 @@ In the same conda enviroment you can run the web app with the following command:
 ```
 $ uvicorn api:app --reload --port 8010
 ```
-and navigate the URL http://127.0.0.1:8010, insert your parameters and the click predict.
+and navigate the URL http://127.0.0.1:8010/docs, insert your parameters and the click execute to get your prediction.
 
 
 #### Challenge 4
