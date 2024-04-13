@@ -111,3 +111,5 @@ and navigate the URL http://127.0.0.1:8010/docs, insert your parameters and clic
 
 
 #### Challenge 4
+We are going to use google cloud platform, below you can see a representation of the architecture:
+![image info](/home/calcifer/Desktop/xtream-ai-assignment-engineer/challenge4.png)
