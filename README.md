@@ -113,3 +113,8 @@ and navigate the URL http://127.0.0.1:8010/docs, insert your parameters and clic
 #### Challenge 4
 We are going to use google cloud platform, below you can see a representation of the architecture:
 ![architecture](https://github.com/carolacaivano/xtream-ai-assignment-engineer/blob/main/challenge4.png)
+
+1. Our data can be stored as a CSV file in Google Cloud Storage
+2. After uploading our dataset we can use google's cloud manage machine learning platform, VeretexAI. Utilizing Workblench VertexAI, we can create a notebook for data analysis and model training.
+3. Once we have trained our model it's essential to integrate it into the Vertex AI Model Registry. This serves as a centralized repository for managing the lifecycle of our machine learning model.
+4. Finally we need to deploy our model to an endpoint. Once deployed on Vertex AI, our model functions like any other REST endpoint, accessible for calls from web applications.
