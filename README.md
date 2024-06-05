@@ -95,14 +95,14 @@ $ jupyter -notebook
 ```
 
 #### Challenge 2
-In the same conda environment you van execute the script pipeline.py, that can be found in the folder solution. You can run it with the following command:
+In the same conda environment, you can execute the script pipeline.py, which can be found in the folder solution. You can run it with the following command:
 ```
 $ python pipeline.py path_of_dataset
 ```
 you need to specify the path where your dataset is located.
 
 #### Challenge 3
-In the same conda enviroment you can run the web app with the following command:
+In the same conda environment you can run the web app with the following command:
 
 ```
 $ uvicorn api:app --reload --port 8010
@@ -111,10 +111,10 @@ and navigate the URL http://127.0.0.1:8010/docs, insert your parameters and clic
 
 
 #### Challenge 4
-We are going to use google cloud platform, below you can see a representation of the architecture:
+We are going to use Google Cloud platform, you can see a representation of the architecture:
 ![architecture](https://github.com/carolacaivano/xtream-ai-assignment-engineer/blob/main/challenge4.png)
 
 1. Our data can be stored as a CSV file in Google Cloud Storage
-2. After uploading our dataset we can use google's cloud manage machine learning platform, VeretexAI. Utilizing Workblench VertexAI, we can create a notebook for data analysis and model training.
-3. Once we have trained our model it's essential to integrate it into the Vertex AI Model Registry. This serves as a centralized repository for managing the lifecycle of our machine learning model.
+2. After uploading our dataset we can use Google's cloud manage machine learning platform, VeretexAI. Utilizing Workbench VertexAI, we can create a notebook for data analysis and model training.
+3. Once we have trained our model it's essential to integrate it into the Vertex AI Model Registry. This serves as a centralized repository for managing the lifecycle of our machine-learning model.
 4. Finally we need to deploy our model to an endpoint. Once deployed on Vertex AI, our model functions like any other REST endpoint, accessible for calls from web applications.
